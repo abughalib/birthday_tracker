@@ -1,6 +1,6 @@
-import validator
+from . import validator
 from ..models.api_model import UserInfoAPI
-from mthread import ThreadWithResult
+from .mthread import ThreadWithResult
 
 
 def validate_user_info(user_info: UserInfoAPI) -> bool:

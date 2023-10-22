@@ -4,12 +4,12 @@ import datetime
 class UserInfoModel:
     def __init__(
         self,
-        full_name: str,
-        personal_mail: str,
-        work_email: str,
+        full_name: bytes,
+        personal_mail: bytes,
+        work_email: bytes,
         birth_date: str,
-        phone: str,
-        preferred_method: str,
+        phone: bytes,
+        preferred_method: bytes,
     ):
         def convert_date(birth_date):
             birth_date.split("-")

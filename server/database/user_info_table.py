@@ -1,3 +1,4 @@
+from datetime import date
 from ..models.db_model import UserInfoModel
 from ..constants import (
     USER_TABLE_NAME,
@@ -41,7 +42,7 @@ class UserInfoTable:
         except Exception as e:
             print(f"Cannot execute: {TABLE_CREATE_SCRIPT}, Error: {e}")
 
-    def insert_into_database(self, field_values: UserInfoModel) -> bool:
+    def insert(self, field_values: UserInfoModel) -> bool:
         """Insert Into Database Table
         @param field_values UserInfoModel
         @returns bool
@@ -71,3 +72,23 @@ class UserInfoTable:
         self.connection.commit()
 
         return True
+
+    def birthday_contacts(self, given_date: date):
+        ''' Birthday Contacts
+            
+            @param given_date date
+
+            @returns List[string]
+
+            Selects all the contacts and methods using the given date
+        '''
+
+        self.connection.execute(f'''
+            SELECT full_name, personal_mail, work_email, phone, preferred_method
+            FROM {USER_TABLE_NAME} WHERE birth_date == given_date
+        ''')
+        
+        res = []
+
+        return res
+

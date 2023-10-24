@@ -4,11 +4,11 @@ from typing import List
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from ..models.db_query_mode import UserInfoQuery
-from ..constants import PERSONAL_EMAIL_SENDER, PERSONAL_EMAIL_SENDER_NAME
 
 port = 465
 
 email_sender = vars.get_app_email()
+email_sender_name = vars.get_email_sender_name()
 password = vars.get_app_email_password()
 
 
@@ -91,7 +91,7 @@ def get_email_format(birthday_list: List[UserInfoQuery]):
         <p class="birthday">Let's all wish them a very happy birthday!</p>
         <p class="regards">Best regards,</p>
         
-        <a href='mailto:{PERSONAL_EMAIL_SENDER}'>{PERSONAL_EMAIL_SENDER_NAME}</a>
+        <a href='mailto:{email_sender}'>{email_sender_name}</a>
 
       </body>
     </html>
